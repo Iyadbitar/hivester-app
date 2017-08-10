@@ -1,0 +1,12 @@
+{
+  "name": "hive-app",
+  "version": "1.0.0",
+  "description": "database exporter for hive ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db:import": "mongorestore -d hive-app ./sample-db"
+  },
+  "author": "Iyad Bitar",
+  "license": "ISC"
+}

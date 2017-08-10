@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":1,"key":{"_id":1},"name":"_id_","ns":"meteor.labels"},{"v":1,"key":{"workspace":1,"deleted":1},"name":"workspace_1_deleted_1","ns":"meteor.labels"}]}
