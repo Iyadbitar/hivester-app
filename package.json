@@ -5,12 +5,19 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "db:import": "mongorestore -d hive-app ./sample-db"
+    "db:import": "mongorestore -d hive_app ./sample-db"
   },
   "author": "Iyad Bitar",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
     "express": "^4.15.4",
+    "json2csv": "^3.11.1",
+    "livereload": "^0.6.2",
+    "lodash": "^4.17.4",
+    "mongodb": "^2.2.31",
+    "monk": "^6.0.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.6",
