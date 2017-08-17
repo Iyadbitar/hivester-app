@@ -1,6 +1,5 @@
 const DatabaseService = require('./database.service');
-const dbService = new DatabaseService();
-const db = dbService.db;
+const db = new DatabaseService();
 
 function ActionsService() { }
 

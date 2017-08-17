@@ -1,0 +1,69 @@
+@import '../../../assets/styles/main';
+
+:local .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+:local .login {
+  padding:1rem 1rem 1rem 1rem;
+  width:300px;
+  background: $yellow-dark;
+  min-width: $wMobile - 20px;
+  @include mxRoundCorners(4px);
+}
+:local .h1 {
+  font-weight: 600;
+  font-size: 2rem;
+  margin: 0 0 1rem 0;
+}
+:local .p {
+  margin: 0 0 1rem 0;
+}
+:local .input-row{
+  margin-bottom: 1rem;
+}
+:local .input-row:last-child{
+  margin-bottom: 0;
+}
+:local .input {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  border: none;
+  padding: 10px 10px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  @include mxRoundCorners(4px);
+}
+
+:local .button {
+  border: none;
+  padding: 10px 20px;
+  background-color:$black;
+  font-size: 1rem;
+  color:$yellow-dark;
+  cursor: pointer;
+  @include mxRoundCorners(4px);
+}
+:local .error {
+  margin-bottom: 1rem;
+  padding:0.5rem;
+  color: #f00;
+  background-color: $yellow-light;
+  @include mxRoundCorners(4px);
+}
+:local .loading {
+  display: inline-block;
+  margin-left: 1rem;
+}

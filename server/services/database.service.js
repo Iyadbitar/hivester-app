@@ -1,21 +1,22 @@
 const DbConfig = require('../../config/db');
 const monk = require('monk');
-const mongodb = require('mongodb');
 
 const url = `${DbConfig.server}:${DbConfig.port}/${DbConfig.database}`;
-const db = monk(url);
 
 let instance;
 
-function DatabaseService() {
-  if(false === !!instance) {
-    instance = this;
+class DatabaseService {
+  constructor() {
+    if(false === !!instance) {
+      instance = monk(url, (error) => {
+        if(error) {
+          console.error('Error in connecting to MonogoDB');
+          process.exit(1);
+        }
+      });
+    }
+    return instance;
   }
-  return instance;
 }
-
-DatabaseService.prototype.db = db;
-
-DatabaseService.prototype.ObjectID = monk.id;
 
 module.exports = DatabaseService;

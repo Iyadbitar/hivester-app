@@ -1,0 +1,28 @@
+:local .list{
+  padding: 1rem 0;
+}
+:local .table {
+  width:100%;
+  max-width: 600px;
+  border-spacing: 5px;
+  border-collapse: separate;
+}
+
+:local .table-th{
+  padding:5px;
+  border-bottom: 1px solid #000;
+  margin:0 10px;
+  text-align: left;
+  font-weight: 600;
+}
+:local .table-th th {
+  border-bottom: 1px solid #999;
+}
+:local .footer td {
+  padding:5px 10px;
+  font-weight: 700;
+  border-top: 1px solid #999;
+}
+:local .right {
+  text-align: right;
+}

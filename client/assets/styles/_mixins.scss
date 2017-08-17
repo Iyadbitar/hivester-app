@@ -1,0 +1,84 @@
+@mixin mxShadow($x, $y, $o, $b, $c){
+    -moz-box-shadow:    $x $y $o $b $c;
+    -webkit-box-shadow: $x $y $o $b $c;
+    box-shadow:         $x $y $o $b $c;
+}
+@mixin mxShadowInner($x, $y, $o, $c){
+    -moz-box-shadow:    inset $x $y $o $c;
+    -webkit-box-shadow: inset $x $y $o $c;
+    box-shadow:         inset $x $y $o $c;
+}
+
+@mixin mxTextShadow($x, $y, $o, $r, $g, $b, $a){
+    -moz-text-shadow: $x $y $o rgba($r, $g, $b, $a);
+    -webkit-text-shadow: $x $y $o rgba($r, $g, $b, $a);
+    text-shadow: $x $y $o rgba($r, $g, $b, $a);
+}
+@mixin mxScale($sx, $sy){
+    -moz-transform: scale($sx, $sy);
+    -ms-transform: scale($sx, $sy);
+    -webkit-transform: scale($sx, $sy);
+    -o-transform: scale($sx, $sy);
+    transform: scale($sx, $sy);
+}
+@mixin mxRoundCorners($r){
+    -moz-border-radius: $r;
+    -webkit-border-radius: $r;
+    border-radius: $r; /* future proofing */
+    -khtml-border-radius: $r; /* for old Konqueror browsers */
+}
+
+@mixin mxTransition($p, $t, $ease){
+    -webkit-transition: $p $t $ease;
+    -moz-transition: $p $t $ease;
+    -o-transition: $p $t $ease;
+    transition: $p $t $ease;
+}
+
+@mixin mxTranslate($x, $y){
+    transform: translate($x, $y);
+    -ms-transform: translate($x, $y);
+    -webkit-transform: translate($x, $y);
+    -o-transform: translate($x, $y);
+    -moz-transform: translate($x, $y);
+}
+
+@mixin mxRotate($deg){
+    transform: rotate($deg);
+    -ms-transform: rotate($deg);
+    -webkit-transform: rotate($deg);
+    -o-transform: rotate($deg);
+    -moz-transform: rotate($deg);
+}
+
+@mixin mxTranslateRotate($x, $y, $deg){
+    transform: translate($x, $y) rotate($deg);
+    -ms-transform: translate($x, $y) rotate($deg);
+    -webkit-transform: translate($x, $y) rotate($deg);
+    -o-transform: translate($x, $y) rotate($deg);
+    -moz-transform: translate($x, $y) rotate($deg);
+}
+@mixin vertical-align($position: relative) {
+  position: $position;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+
+}
+@mixin linearGradientBackground($direction, $color1, $color2) {
+  /* Safari 4-5, Chrome 1-9 */
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from($color1), to($color2));
+
+  /* Safari 5.1, Chrome 10+ */
+  background: -webkit-linear-gradient($direction, $color1, $color2);
+
+  /* Firefox 3.6+ */
+  background: -moz-linear-gradient($direction, $color1, $color2);
+
+  /* IE 10 */
+  background: -ms-linear-gradient($direction, $color1, $color2);
+
+  /* Opera 11.10+ */
+  background: -o-linear-gradient($direction, $color1, $color2);
+}

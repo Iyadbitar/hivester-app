@@ -1,1 +1,9 @@
 <h1>hive</h1>
+
+<script type="text/javascript">
+    var myWebSocket = new WebSocket("ws://localhost:4200/notifications");
+    myWebSocket.onmessage = function(evt) {
+        console.log('event:', evt);
+        // Msg.info("A spanner has been updated. Please refresh the page to see changes.");
+    };
+</script>

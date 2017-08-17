@@ -1,0 +1,33 @@
+@import '../../../assets/styles/main';
+
+:local .item td{
+  padding:5px 10px;
+  background-color: $white;
+}
+
+// :local .item:nth-child(2n+2) td{
+//   background-color: $yellow-dark;
+// }
+
+// :local .item:hover td{
+//   background-color: $yellow-light;
+// }
+
+:local .center {
+  text-align: center;
+}
+:local .button {
+  border: none;
+  padding: 10px 20px;
+  background-color:$black;
+  font-size: 1rem;
+  color:$yellow-dark;
+  cursor: pointer;
+  @include mxRoundCorners(4px);
+}
+
+:local .button-disabled {
+  @extend .button;
+  background-color: rgba(0,0,0,0.4);
+  cursor: default;
+}

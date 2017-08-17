@@ -19,6 +19,13 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: true}));
 
+app.use(function (err, req, res, next) {
+  if(err) {
+    res.status(500).send(err);
+    res.end();
+  }
+})
+
 // =========================================================================
 // Load Modules
 // =========================================================================

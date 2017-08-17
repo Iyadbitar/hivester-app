@@ -36,24 +36,25 @@ ActionsExporter.prototype.exportWorkspace = function(workspaceId, callback) {
     (projects) => {
       this.cache['projects'] = _.keyBy(projects, '_id');
       // get all actions ids in workspace
-      return actions.getByWorkspace(workspaceId, 'id');
+      return actions.getByWorkspace(workspaceId, { fields: { _id: 1, parent: 1}, sort : { projectId : 1, parent: 1 } });
     }
   )
   .then(
     (data) => {
       const allPromises = data.map(
-        (actionId) => {
-          return this.getDenormalizedAction(actionId._id);
+        (actionId, index) => {
+          return this.getDenormalizedAction(actionId._id, index);
         }
       );
       return Promise.all(allPromises);
     }
   )
-  .then( (denormalizedActions) => this.addSequanceId(denormalizedActions) )
+  .then( (actions) => this.sort(actions) )
+  .then( (actions) => this.mapParenChild(actions) )
   .then( (actions) => this.handleData(actions) )
   .then( (actions) => callback(actions) )
   .then( () => actions.close() )
-  .catch(() => this.errorHandler);
+  .catch( () => this.errorHandler );
 
   return this;
 }
@@ -63,15 +64,18 @@ ActionsExporter.prototype.toCSV = function() {
   return this;
 }
 
-ActionsExporter.prototype.getDenormalizedAction = function(actionId) {
+ActionsExporter.prototype.getDenormalizedAction = function(actionId, index) {
   return actions.getById(actionId)
+  .then( (action) => {
+    action._index = index;
+    return action;
+  })
   .then( (action) => this.denormalizeWorkspace(action) )
   .then( (action) => this.denormalizeUsers(action) )
   .then( (action) => this.denormalizeLabels(action) )
   .then( (action) => this.denormalizeProject(action) )
   .then( (action) => this.denormalizeAttachments(action) )
   .then( (action) => this.cleanAction(action) )
-  // .then(console.log)
 }
 
 ActionsExporter.prototype.denormalizeWorkspace = function(action) {
@@ -137,6 +141,7 @@ ActionsExporter.prototype.denormalizeProject = function(action) {
 }
 
 ActionsExporter.prototype.denormalizeAttachments = function(action) {
+  // assuming attachments is array of strings
   action.attachments = action.attachments.join('|');
   return Promise.resolve(action);
 }
@@ -160,6 +165,18 @@ ActionsExporter.prototype.addSequanceId = function(actions) {
     action.id = index;
     return action
   });
+  return Promise.resolve(actions);
+}
+
+ActionsExporter.prototype.sort = function(actions) {
+  actions.sort( (a, b) => a._index - b._index );
+  return Promise.resolve(actions);
+}
+
+ActionsExporter.prototype.mapParenChild = function(actions) {
+  // actions = actions.map( (action) => {
+  //   action._parentIndex = actions.find()
+  // })
   return Promise.resolve(actions);
 }
 

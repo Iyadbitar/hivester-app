@@ -1,8 +1,11 @@
 const ActionsExporter = require('./classes/actions-exporter.class');
 actionsExporter = new ActionsExporter();
 
+
 // get workspace ID from script arguments
 const workspaceId = process.argv[2] ? process.argv[2] : null;
+
+const destinationFile = process.argv[3] ? process.argv[3] : null;
 
 // fail if no workspace ID provided
 if(false === !!workspaceId) {
@@ -11,6 +14,8 @@ if(false === !!workspaceId) {
 }
 
 
-actionsExporter.toCSV().exportWorkspace(workspaceId, (data) => {
-  console.log(data);
-})
+actionsExporter.toCSV().exportWorkspace(workspaceId,
+  (data) => {
+    console.log(data);
+    process.exit(0);
+  })

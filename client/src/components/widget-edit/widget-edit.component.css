@@ -1,0 +1,13 @@
+:local .item td{
+  padding:5px 10px;
+  background: #ccc;
+}
+:local .text{
+  border:none;
+  padding:3px;
+}
+:local .number{
+  width:50px;
+  border:none;
+  padding:3px;
+}

@@ -2,9 +2,19 @@ var express = require('express');
 var config = require('../config/server.config');
 // var session = require('express-session');
 var router = require('express').Router();
+var expressWs = require('express-ws');
 
 module.exports = function(app) {
   'use strict';
+
+
+  const wsInstance = expressWs(app);
+  app.ws('/notifications', function(ws, req) {
+    ws.on('message', function(msg) {
+      console.log(msg)
+      ws.send(msg);
+    });
+  });
 
   app.use(function(req, res, next) {
 
@@ -22,8 +32,11 @@ module.exports = function(app) {
 
   });
 
-  app.use('/', express.static(process.cwd() + '/../client'));
-  app.use('/api/export', require('./routes/export/export.router'))
+  app.use('/', express.static(process.cwd() + '/../client/dist'));
+  app.use('/api/export', require('./routes/export/export.router')(wsInstance));
+  app.use('/api/login', require('./routes/login/login.router')(wsInstance));
+  app.use('/api/workspace', require('./routes/workspace/workspace.router')(wsInstance));
+
 
   return router;
 
