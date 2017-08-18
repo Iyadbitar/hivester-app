@@ -3,7 +3,7 @@ const db = new DatabaseService();
 
 function ExportsService() { }
 
-ExportsService.prototype.collection = db.get('exports', { castIds: false });
+ExportsService.prototype.collection = db.get('exports', { castIds: true });
 
 ExportsService.prototype.get = function(object, config) {
   return this.collection.find(object, config);

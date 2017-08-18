@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 const WorkspacesService = require('../../services/workspaces.service');
 workspacesService = new WorkspacesService();
 
@@ -103,5 +105,34 @@ ExportController.prototype.startExporting = function(workspace, exportJob, wsIns
   });
   return Promise.resolve(exportJob);
 }
+
+ExportController.prototype.download = function(req, res, next, wsInstance) {
+  let exportJobId;
+
+  // protect against werid value in vars
+  if(true === !!req.query.exportJobId) {
+    exportJobId = req.query.exportJobId;
+  }
+  else {
+    res.status(500).send({error: 'Provide valid export job id'});
+    return;
+  }
+
+  return exportsService.getById(exportJobId)
+  .then(
+    (exportJob) => {
+      const downloadFileName = `export_${exportJob.dataSet}_${exportJob._id}.${exportJob.type}`;
+      const filePath = `${config.exportsSavingFolder}/${downloadFileName}`;
+      const csv = fs.readFileSync(filePath, 'utf8');
+      res.header('Content-disposition', `attachment; filename=${downloadFileName}`);
+      res.header('Content-Type', 'application/force-download');
+      res.status(200).end(csv);
+      // res.download(filePath, downloadFileName)
+    }
+  )
+  .catch(next)
+}
+
+
 
 module.exports = ExportController;
