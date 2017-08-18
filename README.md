@@ -5,9 +5,9 @@ To run the application please do the following
 1. install and run mongoDB locally
 2. Clone the repo
 3. In your terminal change directory to the app folder
-4. npm run db:setup will import the DB and setup a test admin user
-5. npm run webpack will build the front-end app
-6. npm run server will start the server
+4. "npm run db:setup" will import the DB and setup a test admin user
+5. "npm run webpack" will build the front-end app
+6. "npm run server" will start the server
 
 The app will run on http://localhost:4200/
 
