@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "db:setup": "mongorestore -d hive_app ./sample-db && node ./db-setup/index.js"
+    "db:setup": "mongorestore -d hive_app ./sample-db && node ./db-setup/index.js",
+    "webpack:watch": "webpack --watch",
+    "webpack": "webpack",
+    "server": "node ./server/server.js"
   },
   "author": "Iyad Bitar",
   "license": "ISC",

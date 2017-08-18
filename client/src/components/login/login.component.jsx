@@ -49,10 +49,10 @@ class Login extends React.Component {
           <form onSubmit={this.handleSubmit}>
             {this.getLoginError()}
             <div className={styles['input-row']}>
-              <input className={styles['input']} type="text" ref="email" placeholder="Email" ref="email" value="hive@admin.com"/>
+              <input className={styles['input']} type="text" ref="email" placeholder="Email" ref="email"/>
             </div>
             <div className={styles['input-row']}>
-              <input className={styles['input']} type="password" ref="password" placeholder="Password" ref="password" value="hive1234"/>
+              <input className={styles['input']} type="password" ref="password" placeholder="Password" ref="password"/>
             </div>
             <div className={styles['input-row']}>
               <button className={styles['button']} disabled={this.props.isDataLoading}>Login</button>

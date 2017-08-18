@@ -18,7 +18,7 @@
 :local .login {
   padding:1rem 1rem 1rem 1rem;
   width:300px;
-  background: $yellow-dark;
+  background: $yellow-mid;
   min-width: $wMobile - 20px;
   @include mxRoundCorners(4px);
 }
