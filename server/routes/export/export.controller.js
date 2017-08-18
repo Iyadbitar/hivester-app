@@ -125,7 +125,7 @@ ExportController.prototype.download = function(req, res, next, wsInstance) {
       const filePath = `${config.exportsSavingFolder}/${downloadFileName}`;
       const csv = fs.readFileSync(filePath, 'utf8');
       res.header('Content-disposition', `attachment; filename=${downloadFileName}`);
-      res.header('Content-Type', 'application/force-download');
+      res.header('Content-Type', 'application/octet-stream; charset=UTF-8');
       res.status(200).end(csv);
       // res.download(filePath, downloadFileName)
     }

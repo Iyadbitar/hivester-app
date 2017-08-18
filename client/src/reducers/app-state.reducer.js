@@ -21,17 +21,18 @@ const appState = (state = {}, action) => {
       exportingWorkspaces[action.workspaceId] = true;
       return { ...state, exportingWorkspaces };
     case END_WORKPSACE_EXPORT:
-      const data = Object.assign({}, state.exportingWorkspaces);
-      exportingWorkspaces = Object.keys(data).reduce(
+      const exporting = Object.assign({}, state.exportingWorkspaces);
+      const readyExportJobs = Object.assign({}, state.readyExportJobs);
+      exportingWorkspaces = Object.keys(exporting).reduce(
         (acc, key) => {
-          if(key !== action.workspacesId) {
+          if(key !== action.exportJob.targetId) {
             acc = Object.assign(acc, data[key]);
           }
           return acc;
         }, {}
       )
-      console.log('>>>', exportingWorkspaces)
-      return { ...state, exportingWorkspaces };
+      readyExportJobs[action.exportJob.targetId] = action.exportJob;
+      return { ...state, exportingWorkspaces, readyExportJobs };
     case USER_LOGIN:
         return { ...state }
     case SET_USER:

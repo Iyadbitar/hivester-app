@@ -2,6 +2,7 @@
 
 :local .dashboard {
   width: 90%;
+  max-width:$wTablet;
   padding: 1rem;
   background-color: $yellow-mid;
   box-sizing: border-box;
@@ -11,8 +12,5 @@
 :local .h1 {
   font-weight: 600;
   font-size: 1.5rem;
-  margin: 0 0 1rem 0;
-}
-:local .p {
   margin: 0 0 1rem 0;
 }

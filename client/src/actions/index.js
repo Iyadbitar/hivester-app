@@ -3,7 +3,7 @@ import {
   startWorkspaceExport,
   endWorkspaceExport,
   exportWorkspace,
-  deleteWidget
+  downloadExport
 } from './data.action';
 
 import {
@@ -24,7 +24,7 @@ export {
   startWorkspaceExport,
   endWorkspaceExport,
   exportWorkspace,
-  deleteWidget,
+  downloadExport,
   configAction,
   userLoginAction,
   setLoggedInUserAction,

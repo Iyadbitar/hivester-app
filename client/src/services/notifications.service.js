@@ -26,10 +26,8 @@ class NotificationsService {
 
     const { appState } = this.store.getState();
     if(appState.exportingWorkspaces[data.exportJob.targetId]){
-      this.store.dispatch(endWorkspaceExport(data.exportJob.targetId));
+      this.store.dispatch(endWorkspaceExport(data.exportJob));
     }
-    console.log(appState);
-    console.log(data)
   }
 }
 

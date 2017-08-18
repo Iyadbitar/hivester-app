@@ -3,6 +3,8 @@
 :local .item td{
   padding:5px 10px;
   background-color: $white;
+  vertical-align: middle;
+  @include mxRoundCorners(4px);
 }
 
 // :local .item:nth-child(2n+2) td{
@@ -23,6 +25,7 @@
   font-size: 1rem;
   color:$yellow-dark;
   cursor: pointer;
+  text-decoration: none;
   @include mxRoundCorners(4px);
 }
 
@@ -30,4 +33,35 @@
   @extend .button;
   background-color: rgba(0,0,0,0.4);
   cursor: default;
+}
+
+:local .export{
+  text-align: center;
+  vertical-align: middle;
+  width:100px;
+}
+
+:local .download{
+  margin-right: 0;
+  float:none;
+  display: block;
+  margin-top:1rem;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+
+
+  @media screen and (min-width:$wTablet){
+    float:right;
+    display: inline-block;
+    margin-top:0;
+    margin-bottom: 0;
+  }
+}
+
+:local .download a{
+  background-color:$yellow-mid;
+  padding:5px;
+  @include mxRoundCorners(4px);
+  color:$black;
+  text-decoration: none;
 }

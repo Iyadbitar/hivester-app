@@ -20,9 +20,13 @@ class Dashboard extends React.Component {
     }
     return <div className={styles['dashboard']}>
       <h1 className={styles['h1']}>Hivester Dashboard</h1>
-      <p className={styles['p']}>Select a workspace to export</p>
 
-      <WorkspacesList workspaces={this.props.workspaces} actions={this.props.actions} exporting={this.props.exporting}/>
+      <WorkspacesList
+        workspaces={this.props.workspaces}
+        actions={this.props.actions}
+        exporting={this.props.exporting}
+        ready={this.props.ready}
+        config={this.props.config}/>
     </div>
   }
 }
@@ -33,7 +37,9 @@ function mapStateToProps(state) {
     isLoginError: state.uiState.isLoginError,
     isDataLoading: state.uiState.isDataLoading,
     workspaces: state.appState.workspaces,
-    exporting: state.appState.exportingWorkspaces
+    exporting: state.appState.exportingWorkspaces,
+    ready: state.appState.readyExportJobs,
+    config: state.appConfig
   }
 }
 

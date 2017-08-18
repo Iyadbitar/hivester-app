@@ -3,7 +3,6 @@
 }
 :local .table {
   width:100%;
-  max-width: 600px;
   border-spacing: 5px;
   border-collapse: separate;
 }
@@ -21,8 +20,11 @@
 :local .footer td {
   padding:5px 10px;
   font-weight: 700;
-  border-top: 1px solid #999;
+  // border-top: 1px solid #999;
 }
 :local .right {
   text-align: right;
+}
+:local .p {
+  margin: 0 0 1rem 0;
 }

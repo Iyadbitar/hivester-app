@@ -6,7 +6,8 @@ export const SET_WORKSPACES = 'SET_WORKSPACES';
 export const START_WORKPSACE_EXPORT = 'START_WORKPSACE_EXPORT';
 export const END_WORKPSACE_EXPORT = 'END_WORKPSACE_EXPORT';
 export const EXPORTT_WORKSPACE = 'EXPORTT_WORKSPACE';
-export const DELETE_WIDGET = 'DELET_WIDGET';
+export const DELETE_WIDGET = 'DELETE_WIDGET';
+export const EXPORT_DOWNLOAD = 'EXPORT_DOWNLOAD';
 
 
 export function loadWorspacesAction() {
@@ -56,10 +57,26 @@ export function exportWorkspace(workspaceId) {
   }
 }
 
-export function endWorkspaceExport(workspaceId) {
+export function downloadExport(exportJobId) {
+  return {
+    type: EXPORTT_WORKSPACE,
+    promiseFactory: (dispatch, getState) => {
+      // this promise factory should return a function that return a promise
+      const { backendBaseUrl, backendEndPoints } = getState().appConfig;
+      return () => httpService.get(backendBaseUrl + backendEndPoints.download, {exportJobId})
+      .then( data => {
+          console.log(data)
+          // dispatch(setWorkspacesList(data.workspaces))
+        }
+      )
+    }
+  }
+}
+
+export function endWorkspaceExport(exportJob) {
   return {
     type: END_WORKPSACE_EXPORT,
-    workspaceId: workspaceId
+    exportJob: exportJob
   }
 }
 

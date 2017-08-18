@@ -7,7 +7,8 @@ var config = {
     login: '/login',
     logout: '/logout',
     workspace: '/workspace',
-    export: '/export/actions'
+    export: '/export/start/actions',
+    download: '/export/download'
   }
 };
 

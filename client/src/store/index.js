@@ -40,7 +40,7 @@ const INITIAL_STATE = {
     user: null,
     workspaces: null,
     exportingWorkspaces: {},
-    exportJobs: []
+    readyExportJobs: {}
   },
   appConfig: { }
 }
