@@ -13,7 +13,7 @@ The app will run on http://localhost:4200/
 
 
 ### Important Notes
-I have a taken too many short cuts and compromises in the code just to provide a functional app with the time I'm able to give to this task sorry for that
+I have taken too many short cuts and compromises in the code just to provide a functional app with the time I'm able to give to this task sorry for that.
 like I skipped unit test, I'm saving the password in clear text and I implement a very loose security model and some code redundancy I know all my faults it just the shortage of time
 
 ### Thank you
